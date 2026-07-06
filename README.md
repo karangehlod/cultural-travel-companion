@@ -401,12 +401,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📞 Support & Contact
-
-- **Hackathon**: Google for Developers — PromptWars
-- **Challenge**: Destination Discovery & Cultural Experiences
-- **Team**: AI Cultural Travel Companion
-
----
-
 **Built with ❤️ for meaningful cultural connections worldwide** 🌍🌸
