@@ -25,6 +25,7 @@ An AI-powered cultural travel companion that helps travelers discover destinatio
 ## 🏗️ Architecture
 
 ```mermaid
+
 graph TD
     Client[Web Client (Next.js, React)]
     
@@ -52,6 +53,7 @@ graph TD
 ## 🔄 Request / Response Flow
 
 ```mermaid
+
 sequenceDiagram
     participant U as User
     participant F as Frontend (Next.js)
