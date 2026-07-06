@@ -46,7 +46,6 @@ export default function LoginPage() {
     setIsLoading(true);
     try {
       // In a real app, this would call Firebase Auth
-      // For demo purposes, we'll simulate a successful login
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       toast.success('Welcome back! Redirecting...');
@@ -62,7 +61,6 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/5 via-background to-accent/5 px-4 py-12">
       <div className="w-full max-w-md">
-        {/* Back link */}
         <Link
           href="/"
           className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
@@ -71,7 +69,6 @@ export default function LoginPage() {
           Back to Home
         </Link>
 
-        {/* Login Card */}
         <div className="bg-card border border-border rounded-2xl p-8 shadow-xl">
           <div className="text-center mb-8">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent mx-auto mb-4">
@@ -86,7 +83,6 @@ export default function LoginPage() {
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-            {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
                 Email Address
@@ -108,7 +104,6 @@ export default function LoginPage() {
               )}
             </div>
 
-            {/* Password */}
             <div>
               <div className="flex items-center justify-between mb-2">
                 <label htmlFor="password" className="block text-sm font-medium text-foreground">
@@ -146,11 +141,10 @@ export default function LoginPage() {
               )}
             </div>
 
-            {/* Submit */}
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium text-base hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all transition-all flex items-center justify-center gap-2"
+              className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium text-base hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
             >
               {isLoading ? (
                 <>
@@ -166,7 +160,6 @@ export default function LoginPage() {
             </button>
           </form>
 
-          {/* Divider */}
           <div className="relative my-8">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-border" />
@@ -176,7 +169,6 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Social Login */}
           <div className="grid grid-cols-2 gap-4">
             <button
               type="button"
@@ -198,7 +190,7 @@ export default function LoginPage() {
                 />
                 <path
                   fill="currentColor"
-                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 149 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                 />
               </svg>
               Google
@@ -215,8 +207,7 @@ export default function LoginPage() {
             </button>
           </div>
 
-          {/* Sign Up Link */}
-          <p className="mt-8 text-center text-muted-foreground">
+          <p className="mt-6 text-center text-muted-foreground">
             Don't have an account?{' '}
             <Link href="/auth/signup" className="text-primary font-medium hover:underline">
               Sign up for free
@@ -225,7 +216,6 @@ export default function LoginPage() {
           </p>
         </div>
 
-        {/* Demo Notice */}
         <div className="mt-6 p-4 bg-muted/50 rounded-xl border border-border/50">
           <div className="flex items-start gap-3">
             <Sparkles className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
