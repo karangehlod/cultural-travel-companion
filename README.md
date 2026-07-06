@@ -24,6 +24,8 @@ An AI-powered cultural travel companion that helps travelers discover destinatio
 
 ## 🏗️ Architecture
 
+Request Response and Architeture Diagram
+
 ```mermaid
 
 graph TD
