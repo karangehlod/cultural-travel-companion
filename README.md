@@ -24,28 +24,51 @@ An AI-powered cultural travel companion that helps travelers discover destinatio
 
 ## 🏗️ Architecture
 
+```mermaid
+graph TD
+    Client[Web Client (Next.js, React)]
+    
+    subgraph Frontend
+        Client --> Pages[Next.js Pages & Routes]
+        Pages --> Components[React Components]
+        Components --> Tailwind[Tailwind CSS]
+        Components --> MapLibre[MapLibre GL JS]
+    end
+
+    subgraph Backend [Backend API (FastAPI)]
+        Pages -- REST API --> Router[API Router]
+        Router --> Auth[Firebase Auth]
+        Router --> Controllers[Service Controllers]
+        
+        Controllers --> DB[(PostgreSQL/SQLite)]
+        Controllers --> Redis[(Redis Cache)]
+        
+        Controllers -- AI Requests --> Gemini[Google Gemini API]
+        Controllers -- Location Data --> GPlaces[Google Places API]
+        Controllers -- Map Data --> GMaps[Google Maps API]
+    end
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        CULTURAL TRAVEL COMPANION                │
-├─────────────────────────────────────────────────────────────────┤
-│  FRONTEND (Next.js 14 + React 18 + TypeScript + Tailwind)      │
-│  ├── Landing Page          ├── Destinations Explorer           │
-│  ├── Experiences Catalog   ├── Itinerary Planner               │
-│  ├── Cultural Stories      ├── Auth (Login/Signup)             │
-│  └── Dashboard (planned)                                            │
-├─────────────────────────────────────────────────────────────────┤
-│  BACKEND (FastAPI + Python 3.11 + Async)                        │
-│  ├── REST API v1           ├── AI Services (Gemini 1.5 Pro)    │
-│  ├── Google Places API     ├── Google Maps API                 │
-│  ├── Firebase Auth         ├── PostgreSQL/SQLite + Redis       │
-│  └── WebSocket (planned)                                          │
-├─────────────────────────────────────────────────────────────────┤
-│  INFRASTRUCTURE                                                  │
-│  ├── Docker Compose (local)   ├── CI/CD (GitHub Actions)       │
-│  ├── Cloud Run (backend)      ├── Firebase Hosting (frontend)  │
-│  ├── Cloud SQL (PostgreSQL)   ├── Cloud Memorystore (Redis)    │
-│  └── Cloud Build                                                          │
-└─────────────────────────────────────────────────────────────────┘
+
+## 🔄 Request / Response Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant F as Frontend (Next.js)
+    participant B as Backend (FastAPI)
+    participant G as Google Places API
+    participant AI as Gemini 1.5 Pro
+    participant DB as Database
+
+    U->>F: Request AI Destination Recommendations
+    F->>B: POST /api/v1/recommendations/destinations (Preferences)
+    B->>DB: Fetch User History & Constraints
+    B->>AI: Generate Destination Ideas with Cultural Context
+    AI-->>B: Return AI generated destinations
+    B->>G: Fetch Real-world Place Details & Photos
+    G-->>B: Return Place Metadata
+    B-->>F: Aggregate & Return Formatted Recommendations
+    F-->>U: Render Beautiful Interactive Map & Cards
 ```
 
 ---
