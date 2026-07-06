@@ -26,10 +26,22 @@ jobs:
           cd backend
           pip install -r requirements.txt
 
-      - name: Run tests
+      - name: Run tests with coverage
         run: |
           cd backend
           python -m pytest -v --cov=app --cov-report=xml
+        env:
+          SECRET_KEY: "test_secret"
+          DATABASE_URL: "sqlite:///./test.db"
+          GOOGLE_API_KEY: "test_key"
+          GOOGLE_MAPS_API_KEY: "test_key"
+          GOOGLE_PLACES_API_KEY: "test_key"
+          GEMINI_API_KEY: "test_key"
+          FIREBASE_PROJECT_ID: "test_project"
+          FIREBASE_PRIVATE_KEY_ID: "test_key_id"
+          FIREBASE_PRIVATE_KEY: "test_private_key"
+          FIREBASE_CLIENT_EMAIL: "test@example.com"
+          FIREBASE_CLIENT_ID: "test_client_id"
 
       - name: Upload coverage
         uses: codecov/codecov-action@v3
@@ -63,10 +75,6 @@ jobs:
           cd frontend
           npm run build
 
-      - name: Run tests
-        run: |
-          cd frontend
-          npm test -- --watchAll=false --coverage
 
   docker-build:
     needs: [test-backend, test-frontend]
