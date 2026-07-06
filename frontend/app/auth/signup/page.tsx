@@ -241,16 +241,18 @@ export default function SignupPage() {
   const renderStep2 = () => {
     const watchedTravelStyle = watch('travelStyle');
     const watchedInterests = watch('interests') || [];
+    const watchedBudgetRange = watch('budgetRange');
     
     return (
       <div className="space-y-6 animate-slide-up">
         <div>
           <label className="block text-sm font-medium text-foreground mb-3">
-            What\'s your travel style? <span className="text-muted-foreground font-normal">(Select one)</span>
+            What&apos;s your travel style? <span className="text-muted-foreground font-normal">(Select one)</span>
           </label>
           <div className="grid grid-cols-2 gap-3">
             {travelStyles.map((style) => (
               <button
+                key={style.value}
                 type="button"
                 onClick={() => setValue('travelStyle', style.value)}
                 className={`p-4 rounded-xl border-2 text-left transition-all ${
@@ -297,15 +299,16 @@ export default function SignupPage() {
 
         <div>
           <label className="block text-sm font-medium text-foreground mb-3">
-            What\'s your typical daily budget?
+            What&apos;s your typical daily budget?
           </label>
           <div className="grid grid-cols-3 gap-3">
             {budgetRanges.map((budget) => (
               <button
+                key={budget.value}
                 type="button"
                 onClick={() => setValue('budgetRange', budget.value)}
                 className={`p-4 rounded-xl border-2 text-center transition-all ${
-                  watchedInterests === budget.value
+                  watchedBudgetRange === budget.value
                     ? 'border-primary bg-primary/5'
                     : 'border-border hover:border-primary/50/50'
                 }`}

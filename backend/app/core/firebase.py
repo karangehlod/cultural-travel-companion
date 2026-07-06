@@ -1,6 +1,7 @@
 """
 Firebase configuration and initialization
 """
+from __future__ import annotations
 import firebase_admin
 from firebase_admin import credentials, firestore, auth
 from typing import Optional

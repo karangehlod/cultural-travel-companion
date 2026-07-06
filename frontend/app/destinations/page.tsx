@@ -99,7 +99,7 @@ export default function DestinationsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const destinationsPerPage = 6;
 
-  const countries = ['all', ...new Set(mockDestinations.map(d => d.country))];
+  const countries = ['all', ...Array.from(new Set(mockDestinations.map(d => d.country)))];
   const filtered = mockDestinations.filter(d => {
     const matchesSearch = d.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          d.country.toLowerCase().includes(searchQuery.toLowerCase());

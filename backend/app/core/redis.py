@@ -1,6 +1,7 @@
 """
 Redis configuration and client management
 """
+from __future__ import annotations
 import redis.asyncio as redis
 from redis.asyncio import Redis
 
