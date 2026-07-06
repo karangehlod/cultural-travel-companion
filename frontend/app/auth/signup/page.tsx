@@ -75,7 +75,7 @@ export default function SignupPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [step, setStep] = useState(1); // 1: basic info, 2: preferences
+  const [step, setStep] = useState(1);
   
   const {
     register,
@@ -98,7 +98,6 @@ export default function SignupPage() {
     
     setIsLoading(true);
     try {
-      // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       toast.success('Account created! Welcome to CultureCompass!');
@@ -308,7 +307,7 @@ export default function SignupPage() {
                 className={`p-4 rounded-xl border-2 text-center transition-all ${
                   watchedInterests === budget.value
                     ? 'border-primary bg-primary/5'
-                    : 'border-border hover:border-primary/50'
+                    : 'border-border hover:border-primary/50/50'
                 }`}
               >
                 <div className="font-medium text-foreground">{budget.label}</div>
@@ -362,8 +361,7 @@ export default function SignupPage() {
             </p>
           </div>
 
-          {/* Progress Indicator */}
-          <div className="mb-8 mb-8">
+          <div className="mb-8">
             <div className="flex items-center justify-between">
               {[1, 2].map((s) => (
                 <div key={s} className="flex items-center gap-2">
